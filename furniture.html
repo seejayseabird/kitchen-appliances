@@ -129,7 +129,18 @@
 </div>
 
 <script>
-const items = []; // Furniture items will be added here
+const items = [
+  {
+    room: "Dining Room",
+    type: "Dining Set",
+    img: "https://www.peterandrews.com/cdn/shop/files/loft_white_7_pc_dining_set.jpg?v=1720740050",
+    alt: "Loft 7-Pc Extendable Dining Set",
+    title: "Loft 7-Pc Extendable Dining Set (84\"-106\")",
+    model: "Vintage White",
+    desc: "Solid reclaimed pine. Extendable table (84\"-106\" with 22\" leaf) plus 6 ladderback chairs. Turned legs, center support leg, tasteful distressing. Dimensions: W:84-106\" x D:42\" x H:30\".",
+    link: "https://www.peterandrews.com/collections/dining-tables/products/urban-loft-7-piece-extendable-dining-set"
+  }
+];
 
 function setGroup(mode) {
   document.getElementById('btn-room').classList.toggle('active', mode === 'room');
@@ -157,7 +168,7 @@ function setGroup(mode) {
           <img src="${a.img}" alt="${a.alt}">
           <div class="info">
             <h3>${a.title}</h3>
-            ${a.model ? `<div class="model">Model: ${a.model}</div>` : ''}
+            ${a.model ? `<div class="model">${a.model}</div>` : ''}
             <p class="desc">${a.desc}</p>
             <a class="link" href="${a.link}" target="_blank" rel="noopener">View →</a>
           </div>
