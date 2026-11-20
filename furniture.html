@@ -19,10 +19,20 @@
     background: var(--bg);
     color: var(--text);
     margin: 0;
-    padding: 24px 16px 48px;
+    padding: 0 0 48px;
     line-height: 1.5;
   }
-  .container { max-width: 1000px; margin: 0 auto; }
+  .banner {
+    background: #1a1a1a;
+    color: white;
+    text-align: center;
+    padding: 16px 16px;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 24px;
+  }
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
   .nav {
     display: flex;
     gap: 12px;
@@ -107,6 +117,7 @@
 </style>
 </head>
 <body>
+<div class="banner">4 Seaward Ct Stuff</div>
 <div class="container">
   <div class="nav">
     <a href="index.html">Kitchen Appliances</a>
@@ -114,7 +125,6 @@
   </div>
 
   <h1>Furniture</h1>
-  <p class="subtitle">Live page — send links anytime to add items.</p>
 
   <div class="controls">
     <button id="btn-room" class="active" onclick="setGroup('room')">By Room</button>
@@ -124,7 +134,7 @@
   <div id="content"></div>
 
   <footer>
-    Compiled furniture shortlist. Live and updatable.
+    Compiled furniture shortlist.
   </footer>
 </div>
 
