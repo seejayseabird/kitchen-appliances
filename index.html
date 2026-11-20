@@ -24,7 +24,26 @@
   }
   .container { max-width: 1000px; margin: 0 auto; }
   h1 { font-size: 28px; margin: 0 0 8px; }
-  .subtitle { color: var(--muted); margin-bottom: 32px; font-size: 15px; }
+  .subtitle { color: var(--muted); margin-bottom: 16px; font-size: 15px; }
+  .controls {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .controls button {
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  .controls button.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
   h2 {
     font-size: 20px;
     margin: 40px 0 16px;
@@ -63,6 +82,7 @@
   @media (max-width: 600px) {
     .appliance { flex-direction: column; align-items: center; text-align: center; }
     .appliance img { width: 220px; height: 220px; }
+    .controls { flex-wrap: wrap; }
   }
   footer { margin-top: 48px; text-align: center; color: var(--muted); font-size: 13px; }
 </style>
@@ -70,141 +90,181 @@
 <body>
 <div class="container">
   <h1>Kitchen Appliances</h1>
-  <p class="subtitle">Grouped by brand and collection. Live page — updates when new items are added.</p>
+  <p class="subtitle">Live page — send more links anytime to update.</p>
 
-  <h2>KitchenAid</h2>
-
-  <div class="appliance">
-    <img src="https://images.webfronts.com/cache/meugwfykrlou.jpg" alt="KitchenAid KOED530SPS">
-    <div class="info">
-      <h3>30 in. Double Wall Oven with True European Convection</h3>
-      <div class="model">Model: KOED530SPS</div>
-      <p class="desc">10.0 cu. ft. total capacity. Even-Heat True Convection in both ovens, No Preheat Air Fry mode, temperature probe, SatinGlide roll-out rack, and PrintShield fingerprint-resistant stainless finish.</p>
-      <a class="link" href="https://www.pcrichard.com/kitchenaid-wall-oven/KOED530SPS.html" target="_blank" rel="noopener">View on P.C. Richard →</a>
-    </div>
+  <div class="controls">
+    <button id="btn-brand" class="active" onclick="setGroup('brand')">By Brand</button>
+    <button id="btn-type" onclick="setGroup('type')">By Type</button>
   </div>
 
-  <div class="appliance">
-    <img src="https://images.webfronts.com/cache/mecpwueccvdt.jpg" alt="KitchenAid KOED730SPS">
-    <div class="info">
-      <h3>30 in. Smart Double Wall Oven with Assisted Cooking Modes</h3>
-      <div class="model">Model: KOED730SPS</div>
-      <p class="desc">10.0 cu. ft. total capacity. Smart connectivity, Assisted Cooking Modes, Steam Bake, Fresh Pizza Mode (up to 550°F), Even-Heat True Convection, Air Fry, and backlit knobs. PrintShield stainless.</p>
-      <a class="link" href="https://www.pcrichard.com/kitchenaid-wall-oven/KOED730SPS.html" target="_blank" rel="noopener">View on P.C. Richard →</a>
-    </div>
-  </div>
-
-  <div class="appliance">
-    <img src="https://content.abt.com/media/images/products/BDP_Images/kitchenaid-dishwasher-KDTS424SPS.jpg" alt="KitchenAid KDTS424SPS">
-    <div class="info">
-      <h3>24 in. Top Control Dishwasher with 3rd Rack & ProDry</h3>
-      <div class="model">Model: KDTS424SPS</div>
-      <p class="desc">44 dBA. 360° Max Jets third rack, ProDry system, ProWash adaptive cycle, self-cleaning filtration, adjustable racks, towel bar handle, PrintShield stainless finish.</p>
-      <a class="link" href="https://www.pcrichard.com/kitchenaid-24-in-top-control-dishwasher-with-44-dba-sound-level-3rd-rack-and-prodry-system-stainless-steel-with-printshield-finish/KDTS424SPS.html" target="_blank" rel="noopener">View on P.C. Richard →</a>
-    </div>
-  </div>
-
-  <h2>Café</h2>
-
-  <div class="appliance">
-    <img src="https://imgres.tailbase.com/rzdimg/prods/800/666354_1.jpg" alt="Café CGU366P2TS1">
-    <div class="info">
-      <h3>36 in. Commercial-Style Gas Rangetop with 6 Burners</h3>
-      <div class="model">Model: CGU366P2TS1</div>
-      <p class="desc">Natural gas (LP convertible). 21,000 BTU multi-ring burner, two 18,000 BTU power burners, two 12,000 BTU griddle burners, Inspiral heat distribution, continuous cast-iron grates, sealed burners, dishwasher-safe knobs, stainless steel finish.</p>
-      <a class="link" href="https://www.pcrichard.com/cafe-36-in-6-burner-natural-gas-rangetop-with-simmer-burner-and-power-burner-stainless-steel/CGU366P2TS1.html" target="_blank" rel="noopener">View on P.C. Richard →</a>
-    </div>
-  </div>
-
-  <h2>Frigidaire Professional</h2>
-
-  <div class="appliance">
-    <img src="https://content.abt.com/media/images/products/BDP_Images/frigidaire-professional-double-wall-oven-PCWD3085AF.jpg" alt="Frigidaire Professional PCWD3085AF">
-    <div class="info">
-      <h3>30 in. Smart Double Wall Oven with Stone-Baked Pizza Mode</h3>
-      <div class="model">Model: PCWD3085AF</div>
-      <p class="desc">10.6 cu. ft. total capacity. Total Convection, Stone-Baked Pizza Mode (up to 750°F+), Air Fry, Steam Bake/Roast, smart app connectivity, and Smudge-Proof stainless steel.</p>
-      <a class="link" href="https://www.pcrichard.com/frigidaire-professional-wall-oven-pcwd3085af/PCWD3085AF.html" target="_blank" rel="noopener">View on P.C. Richard →</a>
-    </div>
-  </div>
-
-  <div class="appliance">
-    <img src="https://images.webfronts.com/cache/frtusmmvvzti.jpg" alt="Frigidaire Professional PCWD3080AF">
-    <div class="info">
-      <h3>30 in. Double Wall Oven with Total Convection</h3>
-      <div class="model">Model: PCWD3080AF</div>
-      <p class="desc">10.6 cu. ft. total capacity. Total Convection in both ovens, No Preheat, Air Fry (tray included), Steam Bake/Roast, Slow Cook, temperature probe, and Smudge-Proof stainless.</p>
-      <a class="link" href="https://www.pcrichard.com/frigidaire-professional-30-in-10.6-cu-ft-top-control-electric-double-wall-oven-with-true-european-convection-stainless-steel/PCWD3080AF.html" target="_blank" rel="noopener">View on P.C. Richard →</a>
-    </div>
-  </div>
-
-  <div class="appliance">
-    <img src="https://content.abt.com/media/images/products/BDP_Images/frigidaire-microwave-drawer-UMBW2411AS-main.jpg" alt="Frigidaire Professional UMBW2411AS">
-    <div class="info">
-      <h3>24 in. Built-In Drawer Microwave</h3>
-      <div class="model">Model: UMBW2411AS</div>
-      <p class="desc">1.2 cu. ft. capacity, 1000 watts. IllumiTouch control panel, Smooth-Glide drawer, sensor cook & reheat, self-venting, ADA compliant, stainless steel.</p>
-      <a class="link" href="https://www.pcrichard.com/frigidaire-professional-microwave-umbw2411as/UMBW2411AS.html" target="_blank" rel="noopener">View on P.C. Richard →</a>
-    </div>
-  </div>
-
-  <div class="appliance">
-    <img src="https://content.abt.com/media/images/products/BDP_Images/frigidaire-pro-microwave-drawer-UMBW3011AS-main.jpg" alt="Frigidaire Professional UMBW3011AS">
-    <div class="info">
-      <h3>30 in. Built-In Drawer Microwave</h3>
-      <div class="model">Model: UMBW3011AS</div>
-      <p class="desc">1.2 cu. ft. capacity, 1000 watts. IllumiTouch control panel, Smooth-Glide drawer, sensor cook & reheat, self-venting, ADA compliant, stainless steel. Fits wider installations.</p>
-      <a class="link" href="https://www.pcrichard.com/frigidaire-professional-microwave-umbw3011as/UMBW3011AS.html" target="_blank" rel="noopener">View on P.C. Richard →</a>
-    </div>
-  </div>
-
-  <div class="appliance">
-    <img src="https://content.abt.com/media/images/products/BDP_Images/frigidaire-cooktop-PCCG3680AS.jpg" alt="Frigidaire Professional PCCG3680AS">
-    <div class="info">
-      <h3>36 in. 5-Burner Natural Gas Cooktop</h3>
-      <div class="model">Model: PCCG3680AS</div>
-      <p class="desc">PowerPlus 18,000 BTU center burner, EvenTemp technology, simmer burner, continuous cast iron grates, dishwasher-safe grates & caps, backlit LED knobs, stainless steel.</p>
-      <a class="link" href="https://www.pcrichard.com/frigidaire-professional-36-in-5-burner-natural-gas-cooktop-with-simmer-burner-and-power-burner-stainless-steel/PCCG3680AS.html" target="_blank" rel="noopener">View on P.C. Richard →</a>
-    </div>
-  </div>
-
-  <h2>Frigidaire Gallery</h2>
-
-  <div class="appliance">
-    <img src="https://content.abt.com/media/images/products/BDP_Images/frigidaire-gallery-refrigerator-GRDA1911AF-main.jpg" alt="Frigidaire Gallery GRDA1911AF">
-    <div class="info">
-      <h3>33 in. 18.9 cu. ft. Freezerless Refrigerator</h3>
-      <div class="model">Model: GRDA1911AF</div>
-      <p class="desc">All-refrigerator (no freezer) with 18.9 cu. ft. capacity. EvenTemp cooling, CrispSeal Plus crispers, SpaceWise organization, and Smudge-Proof stainless steel finish. Optional trim kit for built-in look.</p>
-      <a class="link" href="https://www.pcrichard.com/frigidaire-gallery-refrigerator-grda1911af/GRDA1911AF.html" target="_blank" rel="noopener">View on P.C. Richard →</a>
-    </div>
-  </div>
-
-  <div class="appliance">
-    <img src="https://content.abt.com/media/images/products/BDP_Images/frigidaire-gallery-freezer-GRDF1911AF-main.jpg" alt="Frigidaire Gallery GRDF1911AF">
-    <div class="info">
-      <h3>33 in. 18.8–19 cu. ft. Single-Door Freezer</h3>
-      <div class="model">Model: GRDF1911AF</div>
-      <p class="desc">Matching all-freezer. EvenTemp cooling, SpaceWise organization, LED lighting, ice maker ready, power outage assurance (keeps food frozen ~2 days), Smudge-Proof stainless. ENERGY STAR.</p>
-      <a class="link" href="https://www.pcrichard.com/frigidaire-gallery-freezer-grdf1911af/GRDF1911AF.html" target="_blank" rel="noopener">View on P.C. Richard →</a>
-    </div>
-  </div>
-
-  <h2>Frigidaire (Base)</h2>
-
-  <div class="appliance">
-    <img src="https://images.webfronts.com/cache/frgsjiblgoks.jpg" alt="Frigidaire FDSR4501AP">
-    <div class="info">
-      <h3>24 in. Panel-Ready Top Control Dishwasher</h3>
-      <div class="model">Model: FDSR4501AP</div>
-      <p class="desc">Custom panel-ready for a built-in look. 49 dBA, 3rd rack, EvenDry system, BladeSpray arm, stainless steel tub, 14 place settings, NSF sanitize option, ENERGY STAR.</p>
-      <a class="link" href="https://www.pcrichard.com/frigidaire-24-in-top-control-dishwasher-with-49-dba-sound-level-3rd-rack-and-evendry-custom-panel-ready/FDSR4501AP.html" target="_blank" rel="noopener">View on P.C. Richard →</a>
-    </div>
-  </div>
+  <div id="content"></div>
 
   <footer>
-    Compiled kitchen appliance shortlist. Live and updatable — send more links anytime.
+    Compiled kitchen appliance shortlist. Live and updatable.
   </footer>
 </div>
+
+<script>
+const appliances = [
+  {
+    brand: "KitchenAid",
+    type: "Wall Oven",
+    img: "https://images.webfronts.com/cache/meugwfykrlou.jpg",
+    alt: "KitchenAid KOED530SPS",
+    title: "30 in. Double Wall Oven with True European Convection",
+    model: "KOED530SPS",
+    desc: "10.0 cu. ft. total capacity. Even-Heat True Convection in both ovens, No Preheat Air Fry mode, temperature probe, SatinGlide roll-out rack, and PrintShield fingerprint-resistant stainless finish.",
+    link: "https://www.pcrichard.com/kitchenaid-wall-oven/KOED530SPS.html"
+  },
+  {
+    brand: "KitchenAid",
+    type: "Wall Oven",
+    img: "https://images.webfronts.com/cache/mecpwueccvdt.jpg",
+    alt: "KitchenAid KOED730SPS",
+    title: "30 in. Smart Double Wall Oven with Assisted Cooking Modes",
+    model: "KOED730SPS",
+    desc: "10.0 cu. ft. total capacity. Smart connectivity, Assisted Cooking Modes, Steam Bake, Fresh Pizza Mode (up to 550°F), Even-Heat True Convection, Air Fry, and backlit knobs. PrintShield stainless.",
+    link: "https://www.pcrichard.com/kitchenaid-wall-oven/KOED730SPS.html"
+  },
+  {
+    brand: "KitchenAid",
+    type: "Dishwasher",
+    img: "https://content.abt.com/media/images/products/BDP_Images/kitchenaid-dishwasher-KDTS424SPS.jpg",
+    alt: "KitchenAid KDTS424SPS",
+    title: "24 in. Top Control Dishwasher with 3rd Rack & ProDry",
+    model: "KDTS424SPS",
+    desc: "44 dBA. 360° Max Jets third rack, ProDry system, ProWash adaptive cycle, self-cleaning filtration, adjustable racks, towel bar handle, PrintShield stainless finish.",
+    link: "https://www.pcrichard.com/kitchenaid-24-in-top-control-dishwasher-with-44-dba-sound-level-3rd-rack-and-prodry-system-stainless-steel-with-printshield-finish/KDTS424SPS.html"
+  },
+  {
+    brand: "Café",
+    type: "Rangetop",
+    img: "https://imgres.tailbase.com/rzdimg/prods/800/666354_1.jpg",
+    alt: "Café CGU366P2TS1",
+    title: "36 in. Commercial-Style Gas Rangetop with 6 Burners",
+    model: "CGU366P2TS1",
+    desc: "Natural gas (LP convertible). 21,000 BTU multi-ring burner, two 18,000 BTU power burners, two 12,000 BTU griddle burners, Inspiral heat distribution, continuous cast-iron grates, sealed burners, dishwasher-safe knobs, stainless steel finish.",
+    link: "https://www.pcrichard.com/cafe-36-in-6-burner-natural-gas-rangetop-with-simmer-burner-and-power-burner-stainless-steel/CGU366P2TS1.html"
+  },
+  {
+    brand: "Frigidaire Professional",
+    type: "Wall Oven",
+    img: "https://content.abt.com/media/images/products/BDP_Images/frigidaire-professional-double-wall-oven-PCWD3085AF.jpg",
+    alt: "Frigidaire Professional PCWD3085AF",
+    title: "30 in. Smart Double Wall Oven with Stone-Baked Pizza Mode",
+    model: "PCWD3085AF",
+    desc: "10.6 cu. ft. total capacity. Total Convection, Stone-Baked Pizza Mode (up to 750°F+), Air Fry, Steam Bake/Roast, smart app connectivity, and Smudge-Proof stainless steel.",
+    link: "https://www.pcrichard.com/frigidaire-professional-wall-oven-pcwd3085af/PCWD3085AF.html"
+  },
+  {
+    brand: "Frigidaire Professional",
+    type: "Wall Oven",
+    img: "https://images.webfronts.com/cache/frtusmmvvzti.jpg",
+    alt: "Frigidaire Professional PCWD3080AF",
+    title: "30 in. Double Wall Oven with Total Convection",
+    model: "PCWD3080AF",
+    desc: "10.6 cu. ft. total capacity. Total Convection in both ovens, No Preheat, Air Fry (tray included), Steam Bake/Roast, Slow Cook, temperature probe, and Smudge-Proof stainless.",
+    link: "https://www.pcrichard.com/frigidaire-professional-30-in-10.6-cu-ft-top-control-electric-double-wall-oven-with-true-european-convection-stainless-steel/PCWD3080AF.html"
+  },
+  {
+    brand: "Frigidaire Professional",
+    type: "Microwave",
+    img: "https://content.abt.com/media/images/products/BDP_Images/frigidaire-microwave-drawer-UMBW2411AS-main.jpg",
+    alt: "Frigidaire Professional UMBW2411AS",
+    title: "24 in. Built-In Drawer Microwave",
+    model: "UMBW2411AS",
+    desc: "1.2 cu. ft. capacity, 1000 watts. IllumiTouch control panel, Smooth-Glide drawer, sensor cook & reheat, self-venting, ADA compliant, stainless steel.",
+    link: "https://www.pcrichard.com/frigidaire-professional-microwave-umbw2411as/UMBW2411AS.html"
+  },
+  {
+    brand: "Frigidaire Professional",
+    type: "Microwave",
+    img: "https://content.abt.com/media/images/products/BDP_Images/frigidaire-pro-microwave-drawer-UMBW3011AS-main.jpg",
+    alt: "Frigidaire Professional UMBW3011AS",
+    title: "30 in. Built-In Drawer Microwave",
+    model: "UMBW3011AS",
+    desc: "1.2 cu. ft. capacity, 1000 watts. IllumiTouch control panel, Smooth-Glide drawer, sensor cook & reheat, self-venting, ADA compliant, stainless steel. Fits wider installations.",
+    link: "https://www.pcrichard.com/frigidaire-professional-microwave-umbw3011as/UMBW3011AS.html"
+  },
+  {
+    brand: "Frigidaire Professional",
+    type: "Cooktop",
+    img: "https://content.abt.com/media/images/products/BDP_Images/frigidaire-cooktop-PCCG3680AS.jpg",
+    alt: "Frigidaire Professional PCCG3680AS",
+    title: "36 in. 5-Burner Natural Gas Cooktop",
+    model: "PCCG3680AS",
+    desc: "PowerPlus 18,000 BTU center burner, EvenTemp technology, simmer burner, continuous cast iron grates, dishwasher-safe grates & caps, backlit LED knobs, stainless steel.",
+    link: "https://www.pcrichard.com/frigidaire-professional-36-in-5-burner-natural-gas-cooktop-with-simmer-burner-and-power-burner-stainless-steel/PCCG3680AS.html"
+  },
+  {
+    brand: "Frigidaire Gallery",
+    type: "Refrigerator",
+    img: "https://content.abt.com/media/images/products/BDP_Images/frigidaire-gallery-refrigerator-GRDA1911AF-main.jpg",
+    alt: "Frigidaire Gallery GRDA1911AF",
+    title: "33 in. 18.9 cu. ft. Freezerless Refrigerator",
+    model: "GRDA1911AF",
+    desc: "All-refrigerator (no freezer) with 18.9 cu. ft. capacity. EvenTemp cooling, CrispSeal Plus crispers, SpaceWise organization, and Smudge-Proof stainless steel finish. Optional trim kit for built-in look.",
+    link: "https://www.pcrichard.com/frigidaire-gallery-refrigerator-grda1911af/GRDA1911AF.html"
+  },
+  {
+    brand: "Frigidaire Gallery",
+    type: "Freezer",
+    img: "https://content.abt.com/media/images/products/BDP_Images/frigidaire-gallery-freezer-GRDF1911AF-main.jpg",
+    alt: "Frigidaire Gallery GRDF1911AF",
+    title: "33 in. 18.8–19 cu. ft. Single-Door Freezer",
+    model: "GRDF1911AF",
+    desc: "Matching all-freezer. EvenTemp cooling, SpaceWise organization, LED lighting, ice maker ready, power outage assurance (keeps food frozen ~2 days), Smudge-Proof stainless. ENERGY STAR.",
+    link: "https://www.pcrichard.com/frigidaire-gallery-freezer-grdf1911af/GRDF1911AF.html"
+  },
+  {
+    brand: "Frigidaire",
+    type: "Dishwasher",
+    img: "https://images.webfronts.com/cache/frgsjiblgoks.jpg",
+    alt: "Frigidaire FDSR4501AP",
+    title: "24 in. Panel-Ready Top Control Dishwasher",
+    model: "FDSR4501AP",
+    desc: "Custom panel-ready for a built-in look. 49 dBA, 3rd rack, EvenDry system, BladeSpray arm, stainless steel tub, 14 place settings, NSF sanitize option, ENERGY STAR.",
+    link: "https://www.pcrichard.com/frigidaire-24-in-top-control-dishwasher-with-49-dba-sound-level-3rd-rack-and-evendry-custom-panel-ready/FDSR4501AP.html"
+  }
+];
+
+function setGroup(mode) {
+  document.getElementById('btn-brand').classList.toggle('active', mode === 'brand');
+  document.getElementById('btn-type').classList.toggle('active', mode === 'type');
+
+  const groups = {};
+  appliances.forEach(a => {
+    const key = mode === 'brand' ? a.brand : a.type;
+    if (!groups[key]) groups[key] = [];
+    groups[key].push(a);
+  });
+
+  const order = mode === 'brand'
+    ? ["KitchenAid", "Café", "Frigidaire Professional", "Frigidaire Gallery", "Frigidaire"]
+    : ["Wall Oven", "Rangetop", "Cooktop", "Microwave", "Refrigerator", "Freezer", "Dishwasher"];
+
+  let html = '';
+  order.forEach(key => {
+    if (!groups[key]) return;
+    html += `<h2>${key}</h2>`;
+    groups[key].forEach(a => {
+      html += `
+        <div class="appliance">
+          <img src="${a.img}" alt="${a.alt}">
+          <div class="info">
+            <h3>${a.title}</h3>
+            <div class="model">Model: ${a.model}</div>
+            <p class="desc">${a.desc}</p>
+            <a class="link" href="${a.link}" target="_blank" rel="noopener">View on P.C. Richard →</a>
+          </div>
+        </div>`;
+    });
+  });
+
+  document.getElementById('content').innerHTML = html;
+}
+
+setGroup('brand');
+</script>
 </body>
 </html>
