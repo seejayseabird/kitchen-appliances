@@ -23,6 +23,24 @@
     line-height: 1.5;
   }
   .container { max-width: 1000px; margin: 0 auto; }
+  .nav {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 6px;
+  }
+  .nav a.active, .nav a:hover {
+    color: var(--accent);
+    background: #f0f7ff;
+  }
   h1 { font-size: 28px; margin: 0 0 8px; }
   .subtitle { color: var(--muted); margin-bottom: 16px; font-size: 15px; }
   .controls {
@@ -89,6 +107,11 @@
 </head>
 <body>
 <div class="container">
+  <div class="nav">
+    <a href="index.html" class="active">Kitchen Appliances</a>
+    <a href="furniture.html">Furniture</a>
+  </div>
+
   <h1>Kitchen Appliances</h1>
   <p class="subtitle">Live page — send more links anytime to update.</p>
 
