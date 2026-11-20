@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Furniture Compilation</title>
+<style>
+  :root {
+    --bg: #f7f7f8;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #555;
+    --accent: #0a66c2;
+    --border: #e5e5e5;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 24px 16px 48px;
+    line-height: 1.5;
+  }
+  .container { max-width: 1000px; margin: 0 auto; }
+  .nav {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 6px;
+  }
+  .nav a.active, .nav a:hover {
+    color: var(--accent);
+    background: #f0f7ff;
+  }
+  h1 { font-size: 28px; margin: 0 0 8px; }
+  .subtitle { color: var(--muted); margin-bottom: 16px; font-size: 15px; }
+  .controls {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .controls button {
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  .controls button.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+  h2 {
+    font-size: 20px;
+    margin: 40px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border);
+  }
+  .item {
+    display: flex;
+    gap: 20px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .item img {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    background: #fafafa;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+  .info { flex: 1; min-width: 0; }
+  .info h3 { margin: 0 0 4px; font-size: 17px; }
+  .model { color: var(--muted); font-size: 13px; margin-bottom: 8px; font-weight: 500; }
+  .desc { margin: 0 0 12px; color: #333; font-size: 14.5px; }
+  .link {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .link:hover { text-decoration: underline; }
+  @media (max-width: 600px) {
+    .item { flex-direction: column; align-items: center; text-align: center; }
+    .item img { width: 220px; height: 220px; }
+    .controls { flex-wrap: wrap; }
+  }
+  footer { margin-top: 48px; text-align: center; color: var(--muted); font-size: 13px; }
+  .empty { color: var(--muted); text-align: center; padding: 48px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="nav">
+    <a href="index.html">Kitchen Appliances</a>
+    <a href="furniture.html" class="active">Furniture</a>
+  </div>
+
+  <h1>Furniture</h1>
+  <p class="subtitle">Live page — send links anytime to add items.</p>
+
+  <div class="controls">
+    <button id="btn-room" class="active" onclick="setGroup('room')">By Room</button>
+    <button id="btn-type" onclick="setGroup('type')">By Type</button>
+  </div>
+
+  <div id="content"></div>
+
+  <footer>
+    Compiled furniture shortlist. Live and updatable.
+  </footer>
+</div>
+
+<script>
+const items = []; // Furniture items will be added here
+
+function setGroup(mode) {
+  document.getElementById('btn-room').classList.toggle('active', mode === 'room');
+  document.getElementById('btn-type').classList.toggle('active', mode === 'type');
+
+  const content = document.getElementById('content');
+  if (items.length === 0) {
+    content.innerHTML = '<p class="empty">No furniture added yet. Send links to start the list.</p>';
+    return;
+  }
+
+  const groups = {};
+  items.forEach(a => {
+    const key = mode === 'room' ? a.room : a.type;
+    if (!groups[key]) groups[key] = [];
+    groups[key].push(a);
+  });
+
+  let html = '';
+  Object.keys(groups).sort().forEach(key => {
+    html += `<h2>${key}</h2>`;
+    groups[key].forEach(a => {
+      html += `
+        <div class="item">
+          <img src="${a.img}" alt="${a.alt}">
+          <div class="info">
+            <h3>${a.title}</h3>
+            ${a.model ? `<div class="model">Model: ${a.model}</div>` : ''}
+            <p class="desc">${a.desc}</p>
+            <a class="link" href="${a.link}" target="_blank" rel="noopener">View →</a>
+          </div>
+        </div>`;
+    });
+  });
+
+  content.innerHTML = html;
+}
+
+setGroup('room');
+</script>
+</body>
+</html>
