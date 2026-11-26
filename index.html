@@ -250,6 +250,16 @@ const appliances = [
     link: "https://www.costco.com/p/-/4201025279"
   },
   {
+    brand: "Frigidaire Gallery",
+    type: "Refrigerator Bundle",
+    img: "https://gdx-assets.costco.com/adobe/assets/urn:aaid:aem:fa9eb74e-b0db-480a-8d24-1fcf7bb0f5a9/as/4201029313-847__1.avif?width=800",
+    alt: "Frigidaire Gallery Fridge + Freezer Bundle",
+    title: "18.9 cu. ft. Smudge-Proof Built-in Look Refrigerator & Freezer Bundle",
+    model: "GRDA1911AF + GRDF1911AF + Kits",
+    desc: "Side-by-side pair of the matching Gallery all-refrigerator and all-freezer. Includes pairing kit (required for side-by-side) and 79\" dual trim kit for a seamless built-in look. Total ~37.7 cu. ft. capacity.",
+    link: "https://www.costco.com/p/-/frigidaire-gallery-189-cu-ft-smudge-proof-stainless-steel-built-in-look-refrigerator-and-freezer/4201029313"
+  },
+  {
     brand: "Frigidaire",
     type: "Dishwasher",
     img: "https://images.webfronts.com/cache/frgsjiblgoks.jpg",
@@ -274,7 +284,7 @@ function setGroup(mode) {
 
   const order = mode === 'brand'
     ? ["KitchenAid", "Café", "Frigidaire Professional", "Frigidaire Gallery", "Frigidaire"]
-    : ["Wall Oven", "Rangetop", "Cooktop", "Microwave", "Refrigerator", "Freezer", "Dishwasher"];
+    : ["Wall Oven", "Rangetop", "Cooktop", "Microwave", "Refrigerator", "Freezer", "Refrigerator Bundle", "Dishwasher"];
 
   let html = '';
   order.forEach(key => {
