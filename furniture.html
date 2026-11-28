@@ -87,6 +87,23 @@
     padding: 16px;
     margin-bottom: 16px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    position: relative;
+  }
+  .item.choice {
+    border: 2px solid #0a66c2;
+    background: #f8fbff;
+  }
+  .badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #0a66c2;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
   }
   .item img {
     width: 180px;
@@ -111,6 +128,7 @@
     .item { flex-direction: column; align-items: center; text-align: center; }
     .item img { width: 220px; height: 220px; }
     .controls { flex-wrap: wrap; }
+    .badge { top: 8px; right: 8px; }
   }
   footer { margin-top: 48px; text-align: center; color: var(--muted); font-size: 13px; }
   .empty { color: var(--muted); text-align: center; padding: 48px 0; }
@@ -188,7 +206,8 @@ const items = [
     title: "Modmax 5-Piece Next-Gen Nuvella Performance Fabric Modular Sectional",
     model: "92103S6 — Oyster",
     desc: "Modular L-shaped sectional with 5 pieces (left-arm corner, 2 armless chairs, wedge, right-arm corner). Next-Gen Nuvella™ stain-resistant performance fabric with removable zippered covers. Loose reversible cushions, platform foundation, non-skid legs. Dimensions: 107\" W x 107\" D x 36\" H.",
-    link: "https://www.ashleyfurniture.com/p/modmax_5piece_sectional/92103S6.html"
+    link: "https://www.ashleyfurniture.com/p/modmax_5piece_sectional/92103S6.html",
+    choice: true
   },
   {
     room: "Living Room",
@@ -263,8 +282,11 @@ function setGroup(mode) {
   Object.keys(groups).sort().forEach(key => {
     html += `<h2>${key}</h2>`;
     groups[key].forEach(a => {
+      const choiceClass = a.choice ? ' choice' : '';
+      const badge = a.choice ? '<div class="badge">C.J.’s Choice</div>' : '';
       html += `
-        <div class="item">
+        <div class="item${choiceClass}">
+          ${badge}
           <img src="${a.img}" alt="${a.alt}">
           <div class="info">
             <h3>${a.title}</h3>
