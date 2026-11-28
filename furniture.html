@@ -90,20 +90,27 @@
     position: relative;
   }
   .item.choice {
-    border: 2px solid #0a66c2;
-    background: #f8fbff;
+    border: 3px solid #ff6b35;
+    background: linear-gradient(135deg, #fff8f0 0%, #fff0e6 100%);
+    box-shadow: 0 4px 16px rgba(255, 107, 53, 0.25);
   }
   .badge {
     position: absolute;
-    top: 12px;
-    right: 12px;
-    background: #0a66c2;
+    top: -12px;
+    left: 16px;
+    background: linear-gradient(135deg, #ff6b35, #ff8c42);
     color: white;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 4px 10px;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 14px;
     border-radius: 20px;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.4px;
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.4);
+    text-transform: uppercase;
+    z-index: 1;
+  }
+  .badge::before {
+    content: "⭐ ";
   }
   .item img {
     width: 180px;
@@ -128,7 +135,7 @@
     .item { flex-direction: column; align-items: center; text-align: center; }
     .item img { width: 220px; height: 220px; }
     .controls { flex-wrap: wrap; }
-    .badge { top: 8px; right: 8px; }
+    .badge { top: -10px; left: 50%; transform: translateX(-50%); }
   }
   footer { margin-top: 48px; text-align: center; color: var(--muted); font-size: 13px; }
   .empty { color: var(--muted); text-align: center; padding: 48px 0; }
